@@ -1,0 +1,135 @@
+.p1{
+    margin-left: 2em;
+    display: flex;
+}
+.pim{
+    display: flex;
+}
+.pn1{
+    margin: 0.5%;
+    font-size: 170%;
+}
+.pm11{
+    width: 5em;
+    border-radius: 50%;
+}
+.pm1{
+    margin: 1em;
+}
+.pm22{
+    width:50%;
+    height:50%
+}
+.pt{
+    font-size: 2em;
+    font-weight: bolder;
+}
+.pd{
+    font-size: 2em;
+    font-weight:bold;
+    color: gray;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.content{
+    margin: 2%;
+    text-align: justify;
+}
+.pbody{
+    font-size: 2em;
+    margin-top: 3%;
+    text-align: justify;
+}
+.ptags{
+    display: flex;
+}
+.ptag{
+    font-size: 2em;
+    margin: 1%;
+    border:1px solid black;
+    padding: 0.5%;
+    border-radius: 0.5em;
+}
+.pm2{
+    display: flex;
+    justify-content: center;
+}
+.g1{
+ grid-area: a;
+}
+.g2{
+ grid-area: b;
+}
+.f1{
+   display: grid;
+   grid-template-areas: 
+   'a b'
+   ;
+}
+.g1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.g2{
+   margin-left: 10rem;
+   margin-top: 50%;
+   margin-right: 6em;
+}
+.un{
+    color: white;
+    background-color: black;
+    font-size: 2em;
+    font-weight: bold;
+    border-radius: 1.2em;
+    padding: 0.2em 2em;
+}
+.gi{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+.ga{
+    margin-top: 5%;
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+}
+.gff{
+    margin-top: 5%;
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+}
+.loading{
+    color: green;
+    font-weight: bolder;
+    position: absolute;
+    font-size: 8em;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader {
+    border: 16px solid #c3ecca;
+    border-radius: 50%;
+    border-top: 16px solid rgb(255,192,23);
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.a1,.a2,.a3,.a4{
+    margin: 2%;
+}
+.a11,.a33,.a44{
+    font-size: 2em;
+    font-family: inherit;
+    width: 40em;
+    height: 2em;
+    background-color: #fff;
+    border: 0.02em solid gray;
+    border-radius: 4px;
+}
+.a22{
+    font-size: 2em;
+    font-family: inherit;
+    width: 40em;
+    height: 10em;
+    background-color: #fff;
+    border: 0.02em solid gray;
+    border-radius: 4px;
+}
+
+.btn3{
+    font-size: 2em;
+    padding: 0.5em 2em;
+    border: none;
+    color: white;
+    background-color: rgb(25,135,84);
+    border-radius: 0.5em;
+}

@@ -1,0 +1,68 @@
+
+.a{
+    grid-area: a;
+}
+.b{
+    grid-area: b;
+}
+.Navbar1{
+    color: black;
+    background-color: rgb(255,192,23);
+    height: 10%;
+    padding: 1.5%;
+    font-weight: bold;
+    border: 1px solid black;
+    font-size: 23px;
+    display: grid;
+    grid-template-areas: 
+    'a b'
+    ;
+}  
+.m{
+    display: flex;
+    justify-content: center;
+}
+.b{
+    display: flex;
+    justify-content: space-evenly;
+}
+.b1,.b2{
+    text-decoration: none;
+    color: black;
+}
+.b1:hover{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+.b2:hover{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+.b1:visited{
+    color: black;
+    text-decoration: none;
+}
+.b2:visited{
+    color: black;
+    text-decoration: none;
+}
+.b3{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    padding: 11%;
+    border-radius: 1em;
+}
+.b3:hover{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.b3:visited{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}

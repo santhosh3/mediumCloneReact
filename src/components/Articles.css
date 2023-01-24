@@ -1,0 +1,58 @@
+.gf{
+    font-size: 2em;
+    margin-left: 20%;
+    margin-bottom: 1%;
+    display: flex;
+    margin-top: 2em;
+    border-bottom: 1px solid grey;
+    width: 22%;
+    padding: 1%;
+    color: green;
+    font-weight: bolder;
+}
+.aaa{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+}
+
+.a22{
+ margin-top: 20%;
+ margin-left: 5%;
+ border:none;
+ font-weight: bold;
+}
+
+.bbtn{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap:1.2em;
+    margin-top: 1em;
+}
+button{
+    background-color: white;
+    border: none;
+    border: 1px solid black;
+    border-radius: 3em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: lighter;
+}
+.b{
+    border-radius: 9px;
+}
+.ll {
+    border: 3em solid green;
+    border-radius: 50%;
+    border-top: 3em solid yellow;
+    width: 4em;
+    height: 4em;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+.lp{
+    margin-top: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

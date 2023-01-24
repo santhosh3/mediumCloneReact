@@ -1,0 +1,32 @@
+.n1{
+    grid-area: n1;
+}
+.n2{
+    grid-area: n2;
+}
+.navbar2{
+    border: 1px solid gray;
+    display: grid;
+    grid-template-areas: 
+    'n1 n2'
+    ;
+}
+.n1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2% ;
+}
+.n2{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin: 2% ;
+}
+.n21,.n22,.n23{
+    font-size: 2em;
+    font-weight: bold;
+}
+.n21{
+    margin-top: 0.58em;
+}
