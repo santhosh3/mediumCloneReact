@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import signUp from '/home/pc/Desktop/frontEnd/shopping/src/assets/Sign up.gif'
+import signUp from '../assets/Sign up.gif'
 import { useNavigate } from 'react-router';
 import './SignUp.css'
 

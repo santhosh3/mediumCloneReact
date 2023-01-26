@@ -1,6 +1,6 @@
 import React from 'react'
-import '/home/pc/Desktop/frontEnd/shopping/src/components/SingleArticle.css'
-import picture from '/home/pc/Desktop/frontEnd/shopping/src/assets/Ease-of-doing-business.jpg'
+import './SingleArticle.css'
+import picture from '../assets/Ease-of-doing-business.jpg'
 import moment from 'moment'
 
 

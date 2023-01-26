@@ -1,7 +1,6 @@
 import React from 'react'
-import smily from '/home/pc/Desktop/frontEnd/shopping/src/assets/icons8-smiling-face-with-sunglasses-48.png'
 import './Profile.css'
-import settings from '/home/pc/Desktop/frontEnd/shopping/src/assets/graySettings.png'
+import settings from '../assets/graySettings.png'
 import {useNavigate} from 'react-router-dom'
 
 function Profile() {

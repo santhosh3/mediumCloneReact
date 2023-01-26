@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import '/home/pc/Desktop/frontEnd/shopping/src/components/PageArticle.css'
+import './PageArticle.css'
 import { useParams } from 'react-router'
 import axios from 'axios';
-import image from '/home/pc/Desktop/frontEnd/shopping/src/assets/Ease-of-doing-business.jpg'
+import image from '../assets/Ease-of-doing-business.jpg'
 import moment from 'moment'
 import E404 from './E404';
 

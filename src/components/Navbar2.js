@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar2.css'
-import newArtcle from '/home/pc/Desktop/frontEnd/shopping/src/assets/icons8-signing-a-document-48.png'
-import setting from '/home/pc/Desktop/frontEnd/shopping/src/assets/icons8-gear-50.png'
-import smilling from '/home/pc/Desktop/frontEnd/shopping/src/assets/icons8-smiling-face-with-sunglasses-48.png'
+import newArtcle from '../assets/icons8-signing-a-document-48.png'
+import setting from '../assets/icons8-gear-50.png'
+import smilling from '../assets/icons8-smiling-face-with-sunglasses-48.png'
 import { useNavigate } from 'react-router-dom'
 
 function Navbar2() {

@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 import SingleArticle from './SingleArticle';
-import '/home/pc/Desktop/frontEnd/shopping/src/components/Articles.css'
+import './Articles.css'
 import {Link} from 'react-router-dom'
 import Content from './Content';
 

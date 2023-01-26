@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import './SignIn.css'
-import login from '/home/pc/Desktop/frontEnd/shopping/src/assets/Login.gif'
+import login from '../assets/Login.gif'
 import { useNavigate } from 'react-router'
 
 function SignIn(props) {
