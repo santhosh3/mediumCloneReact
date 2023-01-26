@@ -10,16 +10,31 @@
 .button{
     display: flex;
     margin-bottom: 5%;
+    justify-content: space-evenly;
     
 }
-.a1,.a2,.a3,.a4{
+.a1,.a2,.a3,.a4,.a5{
     margin: 0.5em;
 }
 .a5{
-    margin-top: 0.5em;
     margin-bottom: 5em;
 }
 .c2{
     font-size: 3em;
     margin: 1em 0;
+}
+.logout{
+    font-size: 2em;
+    padding: 0.5em 2em;
+    border: none;
+    color: white;
+    background-color: rgb(220,53,69);
+    border-radius: 0.5em;
+    margin-right: 5em;
+}
+#success{
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import './Navbar.css'
 
+
 function Navbar() {
+  
   return (
     <div className='Navbar1'>
      <div className='m'>
@@ -17,13 +19,13 @@ function Navbar() {
      </div>
      <div className='b'>
      <div>
-      <Link to='/home' className='b1'>Home</Link>
+      <Link to='/' className='b1' style={{textDecoration:'none'}}>Home</Link>
      </div>
      <div>
-      <Link to='/signIn' className='b2'>signIn</Link>
+      <Link to='/signIn' className='b2' style={{textDecoration:'none'}}>signIn</Link>
      </div>
-     <div >
-      <Link to='/signUp' className='b3'>getStarted</Link>
+     <div>
+      <Link to='/signUp' className='b3' style={{textDecoration:'none'}}>getStarted</Link>
      </div>
      </div>
     </div>

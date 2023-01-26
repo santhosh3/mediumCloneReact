@@ -8,14 +8,21 @@ function Profile() {
   let navigate = useNavigate();
   function settingsPage(){
     navigate('../Settings')
-  }
+  };
+  let userString = localStorage["user"]
+  let user = JSON.parse(userString)
+  
+
   return (
     <div className='profile-container'>
       <div className='p1'>
-      <img src={smily} className='pm'/>
+      <img src={user.image} className='pm'/>
       </div>
       <div className='p2'>
-        chinna123
+        {user.username}
+        <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+          {user.bio}
+        </div>
       </div>
       <div className='p3'>
         <button className='pb' onClick={settingsPage}>

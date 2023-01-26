@@ -2,24 +2,110 @@ import React from 'react'
 import './Article.css'
 
 function Article() {
+
+  const [data,setData] = React.useState({
+    title : "",
+    body : "",
+    description: "",
+    tagList:""
+  })
+
+  let URL = 'https://api.realworld.io/api/articles'
+
+//   function submitHandler(event){
+//     event.preventDefault();
+//     const {email,password} = data
+//     fetch(URL, {
+//         method:'POST',
+//         headers:{
+//             'Content-Type':'application/json',
+//         },
+//         body: JSON.stringify({user:{email,password}})
+//     }).then(res => {
+//       console.log(res)
+//        if(!res.ok){
+//            return res.json().then(({errors}) => {
+//                 return Promise.reject(errors)
+//        });
+//      }
+//        return res.json();
+//     }).then(({user}) => {
+//       console.log("ad.fjv")
+//        props.updateUser(user);
+//        navigate("/")
+//     })
+//     .catch((errors) => {
+//         setData(prevState => {
+//         return {
+//             ...prevState,
+//             errors:{
+//                ...prevState.errors,
+//                email: "Email or password is incorrect"
+//             },
+//         };
+//        });
+//     });
+// }; 
+
+function submitHandler(e){
+  e.preventDefault();
+  let obj = {
+    title : data.title,
+    body: data.body,
+    description: data.description,
+    tagList: data.tagList.split(',')
+  }
+  fetch(URL, {
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+       authorization:`Token ${localStorage["app_user"]}`
+    },
+    body: JSON.stringify({article:obj})
+  }).then((res) => res.json())
+    .then((res) => console.log(res))
+}
+
+  console.log(data)
+
   return (
-    <div className='container' style={{margin:'3%'}}>
+    <center>
+      <form onSubmit={submitHandler}>
+      <div className='container' style={{margin:'3%'}}>
       <div className='a1'>
-        <input className='a11' placeholder='Article Title' type='text' />
+        <input className='a11' placeholder='Article Title' type='text' 
+         onChange={(e) => {
+          setData({...data, title: e.target.value})
+        }}
+        />
       </div>
       <div className='a2'>
-      <textarea name="textarea" placeholder='whats the article about?' rows="7" cols="121">Write something here</textarea>
+      <textarea name="textarea" placeholder='whats the article about?' rows="7" cols="121"
+        onChange={(e) => {
+          setData({...data, body: e.target.value})
+        }}
+      >Write something here</textarea>
       </div>
       <div className='a3'>
-      <input className='a33' placeholder='Write Your Article' type='text' />
+      <input className='a33' placeholder='Write Your Article' type='text' 
+        onChange={(e) => {
+          setData({...data, description: e.target.value})
+        }}
+      />
       </div>
       <div className='a4'>
-      <input className='a44' placeholder='Tags' type='text' />
+      <input className='a44' placeholder='Tags' type='text' 
+        onChange={(e) => {
+          setData({...data, tagList: e.target.value})
+        }}
+      />
       </div>
       <div>
         <button className='btn3'>Publish</button>
       </div>
     </div>
+      </form>
+    </center>
   )
 }
 

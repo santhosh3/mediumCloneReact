@@ -4,17 +4,21 @@ import { useParams } from 'react-router'
 import axios from 'axios';
 import image from '/home/pc/Desktop/frontEnd/shopping/src/assets/Ease-of-doing-business.jpg'
 import moment from 'moment'
+import E404 from './E404';
 
 function PageArticle() {
   let params = useParams();
   let id = params.id;
+
   let [page,setPage] = useState({
     isLoading:true,
     singlePage:{}
   });
+  let [error,setError] = useState('');
+
   let url = `https://api.realworld.io/api/articles/${id}`
 
-  useEffect(() => {
+  useEffect(() => {  
     axios.get(url)
       .then(response => {
         setPage({
@@ -23,10 +27,11 @@ function PageArticle() {
         })
       })
       .catch(error => {
-        console.log(error);
+        setError(error.message)
       });
   }, []);
 
+  
   
     
   return (
@@ -92,8 +97,18 @@ function PageArticle() {
     </div>
     </div>
       ):(
-        <div className='loading'>
-          <div className="loader"></div>
+        <div>
+          {
+            (error.length > 0) ? (
+              <div>
+                <E404 />
+              </div>
+            ) : (
+              <div className='loading'>
+                <div className="loader"></div>
+              </div>
+            )
+          }
         </div>
       )
      }

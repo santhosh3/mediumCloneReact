@@ -5,13 +5,22 @@ import '/home/pc/Desktop/frontEnd/shopping/src/components/Articles.css'
 import {Link} from 'react-router-dom'
 import Content from './Content';
 
-function Articles() {
+function GloalArticle() {
   let [articles, setArticles] = useState({
     isLoading : true,
     article : []
   });
+
+  const headers = {
+    authorization: `Token ${localStorage.getItem("app_user")}`,
+    "Content-Type": "application/json",
+  }
+
   useEffect(() => {
-    axios.get('https://api.realworld.io/api/articles')
+    axios.get('https://api.realworld.io/api/articles?limit=10&offset=0',{
+        method: "GET",
+        headers: headers,
+    })
     .then(res => res.data.articles)
     .then(res => setArticles({
           isLoading:false,
@@ -25,16 +34,14 @@ function Articles() {
      {!localStorage["app_user"] && <Content />}
     <div className='aaa'>
       <div className='ar'>
-      {
-      !localStorage["app_user"] && <div className='gf'>
-       Global Feed
-      </div> 
-      }
+      {/* <div className='gf'>
+      Global Feed
+      </div> */}
      <div className='gg'>
      {
       !articles.isLoading?(
         articles.article.map((items,index) => (
-        <div key={index}>
+        <div key={index} className="allItems">
           <Link to={`/${items.slug}`} key={index} style={{textDecoration:'none',color:'black'}}>
         <SingleArticle 
         key={index}
@@ -98,4 +105,4 @@ function Articles() {
   )
 }
 
-export default Articles
+export default GloalArticle

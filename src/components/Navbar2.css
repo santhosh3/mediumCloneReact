@@ -5,6 +5,10 @@
     grid-area: n2;
 }
 .navbar2{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: rgba(240, 255, 255, 0.556);
     border: 1px solid gray;
     display: grid;
     grid-template-areas: 
@@ -29,4 +33,33 @@
 }
 .n21{
     margin-top: 0.58em;
+}
+.signOut{
+    color: black;
+    border: none;
+    background-color: azure;
+    font-size: 1.5em;
+    border-radius: 1px;
+    margin-top: 1em;
+    padding: 5px;
+    font-weight: bold;
+}
+.d123{
+ color: black;
+ padding: 6px;
+ font-size: 1.5em;
+ margin: 1%;
+ margin-top: 2em;
+}
+.d123:hover{
+    color: black;
+}
+.d123:active{
+    color: green;
+}
+.D1234{
+ display: flex;
+ flex-direction: column;
+ background-color: azure;
+
 }

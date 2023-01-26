@@ -1,0 +1,30 @@
+.mainBTN{
+    margin-left: 15%;
+    display: flex;
+    margin-bottom: 2%;
+}
+.A11{
+    margin-top: 4em;
+}
+.abtn{
+   margin-left: 2em;
+   font-weight: bolder;
+}
+.gbtn{
+    margin-left: 3%;
+    font-weight: bolder;
+}
+.btn3:hover{
+    background-color: rgb(11, 100, 58);
+}
+.btn4:hover{
+    background-color: rgb(148, 76, 96);
+}
+.btn3:active{
+    color: rgb(25,135,84);
+    background-color: antiquewhite;
+}
+.btn4:active{
+    color: rgb(220,53,69);
+    background-color: antiquewhite;
+}

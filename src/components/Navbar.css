@@ -6,6 +6,9 @@
     grid-area: b;
 }
 .Navbar1{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
     color: black;
     background-color: rgb(255,192,23);
     height: 10%;

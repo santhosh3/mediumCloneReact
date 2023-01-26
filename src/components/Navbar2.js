@@ -4,8 +4,16 @@ import './Navbar2.css'
 import newArtcle from '/home/pc/Desktop/frontEnd/shopping/src/assets/icons8-signing-a-document-48.png'
 import setting from '/home/pc/Desktop/frontEnd/shopping/src/assets/icons8-gear-50.png'
 import smilling from '/home/pc/Desktop/frontEnd/shopping/src/assets/icons8-smiling-face-with-sunglasses-48.png'
+import { useNavigate } from 'react-router-dom'
 
 function Navbar2() {
+  const navigate = useNavigate();
+  function signOut(){
+    localStorage.removeItem("app_user");
+    navigate('/')
+    window.location.reload(true)
+  }
+
   return (
     <div className='navbar2'>
      <div className='n1'>
@@ -20,18 +28,18 @@ function Navbar2() {
      </div>
       <div className='n2'>
         <div className='n21'>
-        <Link to='./home' className='b1'>
+        <Link to='./' className='b1' style={{textDecoration:'none'}}>
             Home
            </Link>
         </div>
         <div className='n22'>
-        <Link to='./Article' className='b1'>
+        <Link to='./Article' className='b1' style={{textDecoration:'none'}}>
         <img className='image' src={newArtcle} alt="login"/>
             Article
            </Link>
         </div>
         <div className='n23'>
-           <Link to='./Settings' className='b1'>
+           <Link to='./Settings' className='b1' style={{textDecoration:'none'}}>
            <img className='image' src={setting} alt="login"/>
             Settings
            </Link>
@@ -42,10 +50,12 @@ function Navbar2() {
           <img className='image' src={smilling} alt="login"/>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <Link class="dropdown-item" to="../Article">New Article</Link>
-            <Link class="dropdown-item" to="../Settings">Settings</Link>
-            <Link class="dropdown-item" to="../Profile">Profile</Link>
-            <Link class="dropdown-item" to="#">Sign Out</Link>
+          <div className='D1234'>
+          <div><Link class="d123" to="../Article" style={{textDecoration:'none'}}>New Article</Link></div>
+          <div><Link class="d123" to="../Settings" style={{textDecoration:'none'}}>Settings</Link></div>
+          <div><Link class="d123" to="../Profile" style={{textDecoration:'none'}}>Profile</Link></div>
+           <div> <button className='signOut' onClick={signOut}>Sign Out</button></div>
+          </div>
           </div>
           </div>
          

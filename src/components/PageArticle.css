@@ -6,11 +6,12 @@
     display: flex;
 }
 .pn1{
-    margin: 0.5%;
+    margin: 1.5%;
     font-size: 170%;
+    margin-top: 0.8em;
 }
 .pm11{
-    width: 5em;
+    width: 6em;
     border-radius: 50%;
 }
 .pm1{

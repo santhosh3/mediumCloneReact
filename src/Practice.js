@@ -74,7 +74,7 @@ function signIn(){
 
 function login(props){
     const navigate = useNavigate()
-    function handleSubmit(event){
+    function submitHandler(event){
         event.preventDefault();
         const {email,password} = login
         fetch(URL, {
@@ -199,4 +199,21 @@ function App(){
     <div>
         Header components
     </div>
+ }
+
+ async function submitHandler(e){
+    e.preventDefault();
+    const {username, email, password} = register
+    const fetchURL = await fetch(URL, {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({user:{username,email,password}})
+    });
+    let res = await fetchURL.json();
+    console.log(res)
+    // if(!res.ok){
+    //     return setRegister({errors})
+    // }
  }

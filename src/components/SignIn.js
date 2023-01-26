@@ -4,7 +4,7 @@ import './SignIn.css'
 import login from '/home/pc/Desktop/frontEnd/shopping/src/assets/Login.gif'
 import { useNavigate } from 'react-router'
 
-function SignIn() {
+function SignIn(props) {
   const navigate = useNavigate()
   const [data,setData] = useState({
     email : "",
@@ -17,40 +17,41 @@ function SignIn() {
 
   let URL = 'https://api.realworld.io/api/users/login'
 
-  function submitHandler(e){
-    e.preventDefault()
-    const {email,password} = data;
-    fetch(URL,{
-      method:"POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({user: {email,password}}),
-    })
-    .then((res) => {
-      if(!res.ok){
-          res.json().then(({errors}) => 
-          setData((prevState) => {
-          return {
-          ...prevState.errors,
-          email: 'Email or Password is incorrect!'
-          }
+   function submitHandler(event){
+        event.preventDefault();
+        const {email,password} = data
+        fetch(URL, {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+            },
+            body: JSON.stringify({user:{email,password}})
+        }).then(res => {
+          console.log(res)
+           if(!res.ok){
+               return res.json().then(({errors}) => {
+                    return Promise.reject(errors)
+           });
+         }
+           return res.json();
+        }).then(({user}) => {
+          console.log("ad.fjv")
+           props.updateUser(user);
+           navigate("/")
         })
-       )
-      throw new Error('Fetch is not successful')
-      }
-      return res.json()
-    }).then(({user}) => {
-       console.log(user)
-       setData({
-       email:"", password:""
-       });
-       navigate('../Articles')
-    })
-    .catch((error) => console.log(error))
-  }
+        .catch((errors) => {
+            setData(prevState => {
+            return {
+                ...prevState,
+                errors:{
+                   ...prevState.errors,
+                   email: "Email or password is incorrect"
+                },
+            };
+           });
+        });
+    }; 
   
-  console.log(data)
 
   return (
    <div className='main-container'>
@@ -73,6 +74,9 @@ function SignIn() {
         setData({...data, email: e.target.value})
       }}
       />
+      <div style={{color:"red",fontSize:"2em"}}>
+        {data.errors.email}
+      </div>
      </div>
      <div className='s44'>
       <input className='input' type='password'placeholder='password'
@@ -80,6 +84,9 @@ function SignIn() {
         setData({...data, password: e.target.value})
       }}
       />
+      <div style={{color:"red",fontSize:"2em"}}>
+        {data.errors.password}
+      </div>
      </div>
      <div className='s55'>
       <input type="submit" value="login" className="btn2"/>

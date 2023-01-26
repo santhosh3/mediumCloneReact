@@ -4,7 +4,7 @@ import signUp from '/home/pc/Desktop/frontEnd/shopping/src/assets/Sign up.gif'
 import { useNavigate } from 'react-router';
 import './SignUp.css'
 
-function SignUp() {
+function SignUp(props) {
   const [register, setRegister] = React.useState({
     username : "",
     email : "",
@@ -18,32 +18,39 @@ function SignUp() {
   let navigate = useNavigate()
 
   let URL = 'https://api.realworld.io/api/users'
-
-  const submitHandler = e =>{
+  
+  function submitHandler(e){
     e.preventDefault();
-    const {username, email, password} = register;
+    const {username, email, password} = register
     fetch(URL, {
       method: 'POST',
-      headers: {
+      headers:{
         'Content-Type':'application/json'
       },
-      body: JSON.stringify({user:{username, email, password}})
-    }).then((res) => {
+      body: JSON.stringify({user:{username,email,password}})
+    }).then(res => {
        if(!res.ok){
-           res.json().then(({errors}) => setRegister({errors}))
-           throw new Error('Fetch is not successfull')
+           console.log(res)
+           return res.json().then(({errors}) => {
+             return Promise.reject(errors);
+           });
        }
        return res.json();
     }).then(({user}) => {
-        setRegister({
-        username: "", email:"", password:""
-       });
+       console.log(user)
+       props.updateUser(user);
        navigate('../Articles')
     })
-    .catch((error) => console.log(error))
+    .catch((errors) => setRegister({errors}));
   }
+
   
-  
+
+   /**
+    name1234
+    name1234@gmail.com
+    123456
+    */
 
   return (
     <div className='main-container'>
@@ -67,9 +74,7 @@ function SignUp() {
       }}
       />
       <div className='errors'>
-        {
-        (register.errors.username)? (register.errors.username): ""
-        } 
+      {register.errors.username}
      </div>
      </div>
      <div className='s33'>
@@ -79,9 +84,7 @@ function SignUp() {
       }}
       />
       <div className='errors'>
-         {
-          (register.errors.email)? (register.errors.email): ""
-         } 
+      {register.errors.email} 
       </div>
      </div>
      <div className='s44'>
@@ -91,9 +94,7 @@ function SignUp() {
       }}
       />
       <div className='errors'>
-         {
-          (register.errors.password)? (register.errors.password): ""
-         } 
+        {register.errors.password}
       </div>
      </div>
      <div className='s55'>
