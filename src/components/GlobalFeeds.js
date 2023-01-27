@@ -34,10 +34,7 @@ function GloalArticle() {
      {!localStorage["app_user"] && <Content />}
     <div className='aaa'>
       <div className='ar'>
-      {/* <div className='gf'>
-      Global Feed
-      </div> */}
-     <div className='gg'>
+      <div className='gg'>
      {
       !articles.isLoading?(
         articles.article.map((items,index) => (

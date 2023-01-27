@@ -134,3 +134,59 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  .signIn{
+    font-size: 2em;
+    margin: 5%;
+    margin-left: 6em;
+    border: 1px solid antiquewhite;
+    padding: 2em;
+    background-color:antiquewhite;
+  }
+
+  .btn123{
+    color: yellow;
+  }
+
+  .btn123:hover{
+    color: black;
+  }
+
+  .btn123:active{
+    color: green;
+  }
+
+  .comment{
+    display: flex;
+    flex-direction: column;
+    margin: 4%;
+    margin-left: 10em;
+  }
+  .comment1{
+    display: flex;
+    flex-direction: column;
+  }
+  .comment2{
+    border: 3px solid gray;
+    font-size: 250%;
+  }
+  .comment3{
+    margin: 2em;
+    margin-left: 40em;
+  }
+  .comment4{
+    padding: 0.5em 1.4em;
+    color: black;
+    border: none;
+    border-radius: 2em;
+    font-size: 2em;
+    background-color: yellow;
+  }
+  .comment4:hover{
+    color: wheat;
+    background-color: green;
+  }
+  .comment4:active{
+    background-color: wheat;
+    color: green;
+  }

@@ -5,6 +5,7 @@ import axios from 'axios';
 import image from '../assets/Ease-of-doing-business.jpg'
 import moment from 'moment'
 import E404 from './E404';
+import { Link } from 'react-router-dom';
 
 function PageArticle() {
   let params = useParams();
@@ -95,6 +96,23 @@ function PageArticle() {
      {page.singlePage.data.article.favoritesCount} followers
      </div>
     </div>
+   { !localStorage["app_user"] && 
+   <div className='signIn'>
+    <Link to='../signIn' className='btn123' style={{textDecoration:"none"}}>Sign-In</Link>
+    &nbsp; &nbsp;  or &nbsp; &nbsp; 
+     <Link to='../SignUp' className='btn123' style={{textDecoration:"none"}}>Sign-Up</Link>
+     &nbsp;  to comment on a post
+    </div>}
+    {  localStorage["app_user"] &&
+      <div className='comment'>
+      <div className='comment1'>
+      <textarea rows="3" cols="50" className='comment2'/>
+      </div>
+      <div className='comment3'>
+        <button className='comment4' style={{fontWeight:"bold"}}>Post comment</button>
+      </div>
+      </div>
+    }
     </div>
       ):(
         <div>
