@@ -1,8 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Article.css'
 
 function Article() {
-
+  let navigate = useNavigate()
   const [data,setData] = React.useState({
     title : "",
     body : "",
@@ -12,40 +13,6 @@ function Article() {
 
   let URL = 'https://api.realworld.io/api/articles'
 
-//   function submitHandler(event){
-//     event.preventDefault();
-//     const {email,password} = data
-//     fetch(URL, {
-//         method:'POST',
-//         headers:{
-//             'Content-Type':'application/json',
-//         },
-//         body: JSON.stringify({user:{email,password}})
-//     }).then(res => {
-//       console.log(res)
-//        if(!res.ok){
-//            return res.json().then(({errors}) => {
-//                 return Promise.reject(errors)
-//        });
-//      }
-//        return res.json();
-//     }).then(({user}) => {
-//       console.log("ad.fjv")
-//        props.updateUser(user);
-//        navigate("/")
-//     })
-//     .catch((errors) => {
-//         setData(prevState => {
-//         return {
-//             ...prevState,
-//             errors:{
-//                ...prevState.errors,
-//                email: "Email or password is incorrect"
-//             },
-//         };
-//        });
-//     });
-// }; 
 
 function submitHandler(e){
   e.preventDefault();
@@ -64,6 +31,7 @@ function submitHandler(e){
     body: JSON.stringify({article:obj})
   }).then((res) => res.json())
     .then((res) => console.log(res))
+    .then(navigate('/'))
 }
 
   console.log(data)

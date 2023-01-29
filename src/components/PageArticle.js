@@ -5,10 +5,12 @@ import axios from 'axios';
 import image from '../assets/Ease-of-doing-business.jpg'
 import moment from 'moment'
 import E404 from './E404';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import DeleteArticle from './DeleteArticle';
 
 function PageArticle() {
   let params = useParams();
+  let navigate = useNavigate();
   let id = params.id;
 
   let [page,setPage] = useState({
@@ -31,9 +33,27 @@ function PageArticle() {
         setError(error.message)
       });
   }, []);
+  
 
+  function deleteArticle(){
+     fetch(url ,{
+      method:"DELETE",
+      headers:{
+        'Content-Type':'application/json',
+         authorization:`Token ${localStorage["app_user"]}`
+      },
+     }).then(res => {
+        navigate('/')
+     })
+     .catch(error => {
+      console.log(error)
+    });
+  }
   
-  
+  let url2 = `https://api.realworld.io/api/articles/${id}/comments`
+
+  let userString = localStorage["user"]
+  let user = JSON.parse(userString)
     
   return (
     <div className='p1'>
@@ -52,7 +72,14 @@ function PageArticle() {
                </div>
               <div>
               {moment(page.singlePage.data.article.createdAt.slice(0,10),'YYYY-MM-DD').from(moment(moment().format().slice(0,10), 'YYYY-MM-DD'))} 
+              </div>  
               </div>
+              <div>
+              { user.username == page.singlePage.data.article.author.username &&
+                <div className='deleteIcon' onClick={deleteArticle}>
+                <DeleteArticle/>
+                </div>
+              }
               </div>
             </div>
             <div className='content'>
@@ -77,6 +104,9 @@ function PageArticle() {
                   ))
                   }
                </div>
+               <div>
+                  Hello
+               </div>
             </div>
         </div>
      </div>
@@ -94,6 +124,9 @@ function PageArticle() {
      </div>
      <div className='gff'>
      {page.singlePage.data.article.favoritesCount} followers
+     </div>
+     <div className='gi'>
+      <button className='btn btn-primary me-md-2' style={{padding:"0.3em", fontSize:"2em"}} >follow</button>
      </div>
     </div>
    { !localStorage["app_user"] && 
