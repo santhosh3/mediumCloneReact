@@ -1,70 +1,269 @@
-# Getting Started with Create React App
+# Endpoints
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Authentication Header:
 
-## Available Scripts
+You can read the authentication header from the headers of the request
 
-In the project directory, you can run:
+`Authorization: Token jwt.token.here`
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Authentication:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`POST /api/users/login`
 
-### `npm test`
+Example request body:
+```JSON
+{
+  "user":{
+    "email": "jake@jake.jake",
+    "password": "jakejake"
+  }
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+No authentication required, returns a [User](/specs/backend-specs/api-response-format.md#users-for-authentication)
 
-### `npm run build`
+Required fields: `email`, `password`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Registration:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`POST /api/users`
 
-### `npm run eject`
+Example request body:
+```JSON
+{
+  "user":{
+    "username": "Jacob",
+    "email": "jake@jake.jake",
+    "password": "jakejake"
+  }
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+No authentication required, returns a [User](/specs/backend-specs/api-response-format.md#users-for-authentication)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Required fields: `email`, `username`, `password`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### Get Current User
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`GET /api/user`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Authentication required, returns a [User](/specs/backend-specs/api-response-format.md#users-for-authentication) that's the current user
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+### Update User
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+`PUT /api/user`
 
-### Making a Progressive Web App
+Example request body:
+```JSON
+{
+  "user":{
+    "email": "jake@jake.jake",
+    "bio": "I like to skateboard",
+    "image": "https://i.stack.imgur.com/xHWG8.jpg"
+  }
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Authentication required, returns the [User](/specs/backend-specs/api-response-format.md#users-for-authentication)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Accepted fields: `email`, `username`, `password`, `image`, `bio`
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+### Get Profile
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`GET /api/profiles/:username`
+
+Authentication optional, returns a [Profile](/specs/backend-specs/api-response-format.md#profile)
+
+
+
+### Follow user
+
+`POST /api/profiles/:username/follow`
+
+Authentication required, returns a [Profile](/specs/backend-specs/api-response-format.md#profile)
+
+No additional parameters required
+
+
+
+### Unfollow user
+
+`DELETE /api/profiles/:username/follow`
+
+Authentication required, returns a [Profile](/specs/backend-specs/api-response-format.md#profile)
+
+No additional parameters required
+
+
+
+### List Articles
+
+`GET /api/articles`
+
+Returns most recent articles globally by default, provide `tag`, `author` or `favorited` query parameter to filter results
+
+Query Parameters:
+
+Filter by tag:
+
+`?tag=AngularJS`
+
+Filter by author:
+
+`?author=jake`
+
+Favorited by user:
+
+`?favorited=jake`
+
+Limit number of articles (default is 20):
+
+`?limit=20`
+
+Offset/skip number of articles (default is 0):
+
+`?offset=0`
+
+Authentication optional, will return [multiple articles](/specs/backend-specs/api-response-format.md#multiple-articles), ordered by most recent first
+
+
+
+### Feed Articles
+
+`GET /api/articles/feed`
+
+Can also take `limit` and `offset` query parameters like [List Articles](/specs/backend-specs/api-response-format.md#list-articles)
+
+Authentication required, will return [multiple articles](/specs/backend-specs/api-response-format.md#multiple-articles) created by followed users, ordered by most recent first.
+
+
+### Get Article
+
+`GET /api/articles/:slug`
+
+No authentication required, will return [single article](/specs/backend-specs/api-response-format.md#single-article)
+
+### Create Article
+
+`POST /api/articles`
+
+Example request body:
+
+```JSON
+{
+  "article": {
+    "title": "How to train your dragon",
+    "description": "Ever wonder how?",
+    "body": "You have to believe",
+    "tagList": ["reactjs", "angularjs", "dragons"]
+  }
+}
+```
+
+Authentication required, will return an [Article](/specs/backend-specs/api-response-format.md#single-article)
+
+Required fields: `title`, `description`, `body`
+
+Optional fields: `tagList` as an array of Strings
+
+
+
+### Update Article
+
+`PUT /api/articles/:slug`
+
+Example request body:
+
+```JSON
+{
+  "article": {
+    "title": "Did you train your dragon?"
+  }
+}
+```
+
+Authentication required, returns the updated [Article](/specs/backend-specs/api-response-format.md#single-article)
+
+Optional fields: `title`, `description`, `body`
+
+The `slug` also gets updated when the `title` is changed
+
+
+### Delete Article
+
+`DELETE /api/articles/:slug`
+
+Authentication required
+
+
+
+### Add Comments to an Article
+
+`POST /api/articles/:slug/comments`
+
+Example request body:
+
+```JSON
+{
+  "comment": {
+    "body": "His name was my name too."
+  }
+}
+```
+
+Authentication required, returns the created [Comment](/specs/backend-specs/api-response-format.md#single-comment)
+
+Required field: `body`
+
+
+
+### Get Comments from an Article
+
+`GET /api/articles/:slug/comments`
+
+Authentication optional, returns [multiple comments](/specs/backend-specs/api-response-format.md#multiple-comments)
+
+
+
+### Delete Comment
+
+`DELETE /api/articles/:slug/comments/:id`
+
+Authentication required
+
+
+
+### Favorite Article
+
+`POST /api/articles/:slug/favorite`
+
+Authentication required, returns the [Article](/specs/backend-specs/api-response-format.md#single-article)
+
+No additional parameters required
+
+
+
+### Unfavorite Article
+
+`DELETE /api/articles/:slug/favorite`
+
+Authentication required, returns the [Article](/specs/backend-specs/api-response-format.md#single-article)
+
+No additional parameters required
+
+
+
+### Get Tags
+
+`GET /api/tags`
+
+No authentication required, returns a [List of Tags](/specs/backend-specs/api-response-format.md#list-of-tags)
